@@ -1,5 +1,6 @@
 from algorithms.search import (
     binary_search_iterative,
+    binary_search_recursive,
     linear_search
 )
 
@@ -28,3 +29,13 @@ class TestSearch(unittest.TestCase):
         self.assertEqual(binary_search_iterative(self.array, 4), 3)
         self.assertEqual(binary_search_iterative(self.array, 5), 4)
         self.assertEqual(binary_search_iterative(self.array, 6), -1)
+
+    def test_binary_search_recursive(self):
+        limit = len(self.array) - 1 # initial value for "right" argument
+        self.assertEqual(binary_search_recursive(self.array, 0, 0, limit), -1)
+        self.assertEqual(binary_search_recursive(self.array, 1, 0, limit), 0)
+        self.assertEqual(binary_search_recursive(self.array, 2, 0, limit), 1)
+        self.assertEqual(binary_search_recursive(self.array, 3, 0, limit), 2)
+        self.assertEqual(binary_search_recursive(self.array, 4, 0, limit), 3)
+        self.assertEqual(binary_search_recursive(self.array, 5, 0, limit), 4)
+        self.assertEqual(binary_search_recursive(self.array, 6, 0, limit), -1)
